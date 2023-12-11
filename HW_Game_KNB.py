@@ -3,12 +3,12 @@ import random
 list_choise = ["К", "Н", "Б"]
 
 
-def КНБ_Сhoise(C):
-    if C == "К":
+def KNB_Сhoise(С):
+    if С == "К":
         print("Камень")
-    elif C == "Н":
+    elif С == "Н":
         print("Ножницы")
-    elif C == "Б":
+    elif С == "Б":
         print("Бумага")
 
 
@@ -19,33 +19,39 @@ def main():
     print()
 
 
-choise = input("Введи на выбор 'К','Н','Б'. Где К - Камень, Н - Ножницы, Б - Бумага :")
+if __name__ == "__main__":
+    choise = input(
+        "Введи на выбор 'К','Н','Б'. Где К - Камень, Н - Ножницы, Б - Бумага :"
+    )
 
 if choise not in list_choise:
     print("Не правильное значенние")
     exit()
 else:
-    КНБ_Сhoise(choise)
+    KNB_Сhoise(choise)
 c_choise = random.choice(list_choise)
-КНБ_Сhoise(c_choise)
-if (
-    (choise == "К" and c_choise == "Н")
-    or (choise == "Н" and c_choise == "Б")
-    or (choise == "Б" and c_choise == "К")
+KNB_Сhoise(c_choise)
+
+if choise == c_choise:
+    print("У нас ничья!")
+
+
+elif (
+    choise == "К"
+    and c_choise == "Н"
+    or choise == "Н"
+    and c_choise == "Б"
+    or choise == "Б"
+    and c_choise == "К"
 ):
     print("Ты выиграл!")
-if (
+
+
+elif (
     (choise == "К" and c_choise == "Б")
     or (choise == "Н" and c_choise == "К")
     or (choise == "Б" and c_choise == "Н")
 ):
     print("Ты проиграл!")
-if (
-    (choise == "К" and c_choise == "К")
-    or (choise == "Н" and c_choise == "Н")
-    or (choise == "Б" and c_choise == "Б")
-):
-    print("У нас ничья!")
 
-if __name__ == "__main__":
-    main()
+main()
